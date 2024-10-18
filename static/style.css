@@ -1,0 +1,238 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #1E1E1E;
+    overflow-y: auto;
+    overflow-x: hidden; /* Убираем горизонтальный скролл для всего сайта */
+}
+
+header {
+    display: flex;
+    background-color: #A1A1A1;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: start;
+    height: 2rem;
+}
+
+.logo {
+    font-weight: 700;
+    width: 100%;
+    max-width: 1200px;
+}
+
+footer {
+    display: flex;
+    background-color: #A1A1A1;
+    justify-content: center;
+    padding: 40px;
+    text-align: start;
+    height: 330px;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    margin-bottom: 4rem;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    /* Убираем стили скролла для десктопа */
+}
+
+.statement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 30px;
+}
+
+.product-st {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    justify-content: space-between;
+    scroll-snap-align: start; /* Для мобильного snapping */
+}
+
+.product-image {
+    height: 200px;
+    background-color: #ddd;
+    position: relative;
+    img {
+        width: 100%;
+        height: 100%;
+        min-height: 200px;
+        object-fit: cover;
+    }
+    span {
+        border-radius: 40px;
+        width: auto;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        background-color: rgb(255, 255, 255);
+        position: absolute;
+    }
+}
+
+.cards-add {
+    position: absolute;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    span {
+        position: relative;
+    }
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0.5em;
+}
+
+.product-info h2 {
+    font-size: 1.2em;
+}
+
+.product-info p {
+    font-size: 0.9em;
+    margin-top: auto;
+}
+
+/* Медиазапросы для адаптивности */
+@media (max-width: 1200px) {
+    h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 992px) {
+    header, footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-grid, .statement-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .product-info h2 {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .product-info p {
+        font-size: 0.8em;
+    }
+
+    .product-image {
+        height: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-section {
+        margin-top: 4rem;
+    }
+
+    .product-grid {
+        display: flex; /* Используем flex для горизонтального расположения карточек */
+        flex-wrap: nowrap; /* Запрещаем перенос строк */
+        overflow-x: auto; /* Включаем горизонтальный скролл */
+        scroll-snap-type: x mandatory; /* Включаем snapping для плавного скролла */
+        scroll-behavior: smooth; /* Добавляем плавную прокрутку */
+        gap: 10px; /* Расстояние между карточками */
+        -webkit-overflow-scrolling: touch; /* Плавная прокрутка для iOS */
+        padding-bottom: 10px; /* Отступ для комфортного использования */
+    }
+
+    .statement-grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .product-grid::-webkit-scrollbar {
+        display: none; /* Скрываем горизонтальный скроллбар */
+    }
+
+    .product {
+        flex: 0 0 85%; /* Фиксированная ширина карточек на мобильной версии */
+        scroll-snap-align: start; /* Снап карточек на мобильной версии */
+    }
+
+    .product-image {
+        height: 200px;
+        background-color: #ddd;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .product-info p {
+        font-size: 0.7em;
+    }
+
+    header {
+        height: 4rem;
+    }
+
+    footer {
+        display: flex;
+        text-align: center;
+        justify-content: start;
+        .logo {
+            margin-top: 1rem;
+        }
+    }
+
+    .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+    
+    .dot.active {
+        background-color: #717171;
+    }
+}
